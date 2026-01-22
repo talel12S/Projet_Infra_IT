@@ -1,28 +1,118 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Clients</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1f2937;
+            --border: #e5e7eb;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        h1 {
+            margin-bottom: 24px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .table-container {
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        thead {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+        }
+
+        th {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
     <h1>Liste des Clients</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Création</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Adresse</th>
-        </tr>
-        {% for row in data %}
-        <tr>
-            <td>{{ row[0] }}</td>
-            <td>{{ row[1] }}</td>
-            <td>{{ row[2] }}</td>
-            <td>{{ row[3] }}</td>
-            <td>{{ row[4] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Création</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Adresse</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 </body>
 </html>
